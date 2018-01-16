@@ -1,8 +1,8 @@
-ï»¿**Basic Scripting Lab**
+**Basic Scripting Lab**
 
-**Information only relevant to artists will be in blue**
+<span style="color:blue">**Information only relevant to artists will be in blue**</span>
 
-**Information only relevant to programmers will be in red**
+<span style="color:red">**Information only relevant to programmers will be in red**</span>
 
 **Information relevant to all will be in black**
 
@@ -12,7 +12,7 @@ First off select the *Main* scene from the *Project* tab. You should see a purpl
 
 Now hit play and see how the game currently plays. You should see red circles coming towards you. If you get hit once you die.
 
-Dying in one hit isnâ€™t very fun! Letâ€™s figure out how to fix that!
+Dying in one hit isn’t very fun! Let’s figure out how to fix that!
 
 **Opening a script**
 
@@ -21,22 +21,28 @@ Scripts are found in the *Project* tab under *Assets. *Navigate to the *Player* 
 ![image alt text](markdown/image_0.png)
 
 Double click the script to open it. (This sometimes takes a while)
-
+<span style="color:red">
 It is good practice to keep all your variable definitions at the top of the class and provide a brief comment explaining what it does. Some variable protection level explanations to get you started:
 
-* **Private **- This is default and means no other script can access it, not even children
+* <span style="color:red"><b>Private</b>- This is default and means no other script can access it, not even children</span>
 
-* **Public** - All scripts can access this variable **AND it shows up as a field in the inspector when this script is attached to an object**
+* <span style="color:red"><b>Public</b> - All scripts can access this variable **AND it shows up as a field in the inspector when this script is attached to an object**</span>
 
-    * If you need a variable to be public that should NOT show in the inspector write "**[HideInInspector]**" (no quotes) before or on the line above
+    * <span style="color:red">If you need a variable to be public that should NOT show in the inspector write "**[HideInInspector]**" (no quotes) before or on the line above</span>
 
-* **Protected** - Child scripts can access this but no other scripts can
+* <span style="color:red"><b>Protected</b> - Child scripts can access this but no other scripts can</span>
 
-As an artist you probably wonâ€™t be editing scripts much if at all but it can be useful to know the basics. Towards the top of the file you should see a handful of comments. Read through them. The image below contains everything you would need to read in the script![image alt text](markdown/image_1.png)
+<span style="color:blue">
+As an artist you probably won’t be editing scripts much if at all but it can be useful to know the basics. Towards the top of the file you should see a handful of comments. Read through them. The image below contains everything you would need to read in the script</span>
+
+![image alt text](markdown/image_1.png)
 
 So now we all know about public variables, but how can we change them? You can change them within the script but this will only affect future objects that use this script, what about the ones already using it? 
 
-Each object that has a Health script attached to it will have its own copy of the variables within (unless they are static variables). Setting the value of a public variable in the script is merely just setting its "default" value for when a script is first added to an object
+<span style="color:red">
+    Each object that has a Health script attached to it will have its own copy of the variables within (unless they are static variables). Setting the value of a public variable in the script is merely just setting its "default" value for when a script is first added to an object    
+</span>
+
 
 The better way to modify these public variables is through the inspector. So lets exit out of this script and go back to Unity. Now we can change our starting health to something other than one. 
 
@@ -54,7 +60,7 @@ Once you have a *Prefab* you can repeatedly drag it into the scene to create cop
 
 **Creating the new enemy type**
 
-Delete all but one of the *SimpleEnemy ***hierarchy** objects **(DONâ€™T DELETE THE PREFAB)**. We will use this last *SimpleEnemy* to create a new enemy type!
+Delete all but one of the *SimpleEnemy ***hierarchy** objects **(DON’T DELETE THE PREFAB)**. We will use this last *SimpleEnemy* to create a new enemy type!
 
 First we need to create a new prefab by right clicking in the *Assets* folder of the *Project* tab. Then selecting *Create > Prefab*. Give it the name "Sniper"
 
@@ -62,7 +68,7 @@ Next drag the *SimpleEnemy *from the hierarchy tab into the prefab you just crea
 
 Here is a list of things you should change:
 
-* Change the color of the *SpriteRenderer* component to whatever youâ€™d like
+* Change the color of the *SpriteRenderer* component to whatever you’d like
 
 * Remove the *Simple Enemy Movement (Script)* component
 
@@ -91,12 +97,13 @@ Select the *SpawnManager *object from the *Hierarchy *tab. Edit the *SpawnManage
 For a more detailed description of the variables check the script for the comments
 
 **Additional reading for Programmers:**
-
+<span style="color:blue">
 Artists see checkoff below
+</span>
 
 Take a look at SpawnManager.cs . This script combines a few things to make the Inspector for the script more useful. While there are much more complicated ways to modify what the inspector of a script is capable of these are going to be the most useful for you:
 
-* [HideInInspector] Use this when you donâ€™t want the inspector to show a variable but you still need it to be public (like in a struct)
+* [HideInInspector] Use this when you don’t want the inspector to show a variable but you still need it to be public (like in a struct)
 
 * Structs - Use these to create convenient groupings of variable names that will stay grouped even in the inspector
 
@@ -114,11 +121,11 @@ Take a look at the relationship between *EnemyMovement.cs SimpleEnemyMovement.cs
 
 * When you override a method it is good practice to call the parent method by using "base.methodName()" *base* refers to the parent class
 
-* Note that we separated Player and Enemy movement entirely because there wasnâ€™t really much shared between them in our case
+* Note that we separated Player and Enemy movement entirely because there wasn’t really much shared between them in our case
 
 Note how *Health.cs *and *Attack.cs* interact. This is a good example of how to utilize *Composition* which should be a pretty new concept in coding here.
 
-* When an object with an *Attack* script comes into contact with another object it will check to see if that object has a *Health* script and if it does it will call that scriptâ€™s *takeDamage()* function.
+* When an object with an *Attack* script comes into contact with another object it will check to see if that object has a *Health* script and if it does it will call that script’s *takeDamage()* function.
 
 * *Composition* is this idea of building up behaviors through modular components. An enemy has a movement script and an attack script. These two scripts together make up the behavior of an enemy. In *Inheritance *you build unique things up by adding new features to a parent class, from the top down. In *Composition* you build unique things from the bottom up by assembling different pieces together to get a desired behavior.
 
@@ -137,4 +144,3 @@ Note how *Health.cs *and *Attack.cs* interact. This is a good example of how to 
 * The Player should be able to be hit more than one time before dying
 
     * Watch out for the clump of enemies following the player, they will do a lot more than 1 damage
-
